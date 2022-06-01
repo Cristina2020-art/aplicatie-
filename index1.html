@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script language = "Javascript">
+        function everif(str) {
+  
+  var at="@"
+          var punct="."
+          var lat=str.indexOf(at)
+          var lstr=str.length
+          var lpunct=str.indexOf(punct)
+          if (str.indexOf(at)==-1){
+          alert("E-mail invalid. Introduceti o adresa reala!!!")
+          return false
+          }
+  
+  if (str.indexOf(at)==-1 || str.indexOf(at)==0 || str.indexOf(at)==lstr){
+          alert("E-mail invalid. Introduceti o adresa reala!!!")
+          return false
+          }
+  
+  if (str.indexOf(punct)==-1 || str.indexOf(punct)==0 || str.indexOf(punct)==lstr){
+          alert("E-mail invalid. Introduceti o adresa reala!!!")
+          return false
+          }
+  
+  if (str.indexOf(at,(lat+1))!=-1){
+          alert("E-mail invalid. Introduceti o adresa reala!!!")
+          return false
+          }
+  
+  if (str.substring(lat-1,lat)==punct || str.substring(lat+1,lat+2)==punct){
+          alert("E-mail invalid. Introduceti o adresa reala!!!")
+          return false
+          }
+  
+  if (str.indexOf(punct,(lat+2))==-1){
+          alert("E-mail invalid. Introduceti o adresa reala!!!")
+          return false
+          }
+   
+  if (str.indexOf(" ")!=-1){
+          alert("E-mail invalid. Introduceti o adresa reala!!!")
+          return false
+          }
+  
+  return true
+          }
+  
+       
+  function evalid(){
+          var emailID=document.eFormular.txtEmail
+   
+          if ((emailID.value==null)||(emailID.value=="")){
+          alert("Va rog sa introduceti o adresa de email")
+          emailID.focus()
+          return false
+          }
+          if (everif(emailID.value)==false){
+          emailID.value=""
+          emailID.focus()
+          return false
+          }
+          return true
+          }
+    </script>
+    <form name="eFormular" method="post" action="#" onSubmit="return evalid()">
+    <p>Enter an Email Address :
+    <input type="text" name="txtEmail">
+    </p>
+    <p>
+    <input type="submit" name="Submit" value="Submit">
+    </p>
+    </form>
+</body>
+</html>
